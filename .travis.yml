@@ -1,0 +1,10 @@
+language: generic
+sudo : required
+services:
+  - docker
+
+before-install :
+  - docker run -f Dockerfile.dev -t atuls\frontend .
+
+script:
+  - docker run -e CI=true USERNAME/docker-react npm run test -- --coverage
